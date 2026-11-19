@@ -1,0 +1,234 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+    /* GrowSync Light Theme Palette Tokens */
+    --color-bg-main: #ECEEF4;
+    --color-bg-secondary: #FFFFFF;
+    --color-bg-card: #FFFFFF;
+    --color-bg-elevated: #F3EEFF;
+    --color-text-main: #1D1830;
+    --color-text-secondary: #77728C;
+    --color-border: #E5E3F0;
+    --color-primary: #6D36F5;
+    --color-primary-deep: #2F1770;
+    --color-accent-purple: #8C58F7;
+  }
+
+  .dark {
+    /* Dark Theme Palette Tokens */
+    --color-bg-main: #11101A;
+    --color-bg-secondary: #191726;
+    --color-bg-card: #211E30;
+    --color-bg-elevated: #29243B;
+    --color-text-main: #F5F3FF;
+    --color-text-secondary: #B3ADC7;
+    --color-border: #383248;
+    --color-primary: #8B7CF6;
+    --color-primary-deep: #2A1F52;
+    --color-accent-purple: #A78BFA;
+  }
+
+  /* Apply background to html AND body so there's never a flash of wrong color */
+  html {
+    background-color: #ECEEF4;
+    color: #1D1830;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  html.dark {
+    background-color: #11101A;
+    color: #F5F3FF;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg-main);
+    color: var(--color-text-main);
+    min-height: 100vh;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  #root {
+    min-height: 100vh;
+    background-color: var(--color-bg-main);
+    color: var(--color-text-main);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Custom Aurora Utilities with Dark Mode Variants */
+.aurora-gradient-btn {
+  background: linear-gradient(110deg, #5141B8, #8B5CF6);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.aurora-gradient-btn:hover {
+  background: linear-gradient(110deg, #4333A6, #7C3AED);
+  box-shadow: 0 8px 24px -4px rgba(139, 92, 246, 0.35);
+  transform: translateY(-1px);
+}
+
+.dark .aurora-gradient-btn {
+  background: linear-gradient(110deg, #6D5BD0, #9061F9);
+}
+
+.dark .aurora-gradient-btn:hover {
+  background: linear-gradient(110deg, #5D49C7, #7E3AF2);
+  box-shadow: 0 8px 24px -4px rgba(167, 139, 250, 0.4);
+}
+
+.aurora-hero-bg {
+  background: linear-gradient(135deg, #34246F 0%, #5141B8 50%, #8B5CF6 100%);
+}
+
+.dark .aurora-hero-bg {
+  background: linear-gradient(135deg, #1C133B 0%, #352668 50%, #5B3EA6 100%);
+}
+
+.aurora-card-glow {
+  background: linear-gradient(135deg, #F3EEFF 0%, #FFFFFF 100%);
+}
+
+.dark .aurora-card-glow {
+  background: linear-gradient(135deg, #29243B 0%, #211E30 100%);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #F3EEFF;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-track {
+  background: #191726;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #C4B5FD;
+  border-radius: 9999px;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #4C3F70;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #A78BFA;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #6D5BD0;
+}
+
+/* Universal Surface & Table Styles for Consistent Light/Dark Mode */
+.cc-card {
+  background-color: var(--color-bg-card);
+  border-color: var(--color-border);
+  color: var(--color-text-main);
+}
+
+.cc-elevated {
+  background-color: var(--color-bg-elevated);
+  border-color: var(--color-border);
+}
+
+.cc-table-container {
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.cc-table-header {
+  background-color: var(--color-bg-main);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+}
+
+.cc-table-row {
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-main);
+  transition: background-color 0.15s ease;
+}
+
+.cc-table-row:hover {
+  background-color: var(--color-bg-elevated);
+}
+
+/* Ensure selects, inputs inherit correct bg in dark mode */
+.dark select option {
+  background-color: #191726;
+  color: #F5F3FF;
+}
+
+/* GrowSync Aesthetic Gradient Stat Cards */
+.growsync-stat-1 {
+  background: linear-gradient(135deg, #2D146F 0%, #431C99 50%, #5623B3 100%);
+  color: #ffffff;
+}
+
+.growsync-stat-2 {
+  background: linear-gradient(135deg, #7442E5 0%, #8D5DF2 100%);
+  color: #ffffff;
+}
+
+.growsync-stat-3 {
+  background: linear-gradient(135deg, #8A52F7 0%, #A57AF9 100%);
+  color: #ffffff;
+}
+
+.growsync-stat-4 {
+  background: linear-gradient(135deg, #AF87FA 0%, #C7ACFC 100%);
+  color: #ffffff;
+}
+
+/* GrowSync Animations & Micro-Interactions */
+@keyframes float-subtle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.88; transform: scale(1.015); }
+}
+
+.animate-float {
+  animation: float-subtle 4s ease-in-out infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s ease-in-out infinite;
+}
+
+.hover-card-lift {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-card-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px -6px rgba(45, 20, 110, 0.12);
+}
+
+.dark .hover-card-lift:hover {
+  box-shadow: 0 12px 28px -6px rgba(139, 92, 246, 0.25);
+}
