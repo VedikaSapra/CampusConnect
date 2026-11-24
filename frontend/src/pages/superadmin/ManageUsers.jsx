@@ -8,8 +8,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useNotification } from '../../context/NotificationContext';
 
 const ROLE_CONFIG = {
-  student:     { label: 'Student',     color: 'bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800/40' },
-  club_admin:  { label: 'Club Admin',  color: 'bg-purple-50 dark:bg-purple-950/40 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800/40' },
+  student: { label: 'Student', color: 'bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800/40' },
+  club_admin: { label: 'Club Admin', color: 'bg-purple-50 dark:bg-purple-950/40 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800/40' },
   super_admin: { label: 'Super Admin', color: 'bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 border-red-200 dark:border-red-800/40' },
 };
 
@@ -61,7 +61,7 @@ export const ManageUsers = () => {
   const handleApproveClubAdmin = async (userId, action, name) => {
     setProcessing(`approve-${userId}`);
     try {
-      const res = await api.post(`/users/${userId}/approve-club-admin/`, { action });
+      const res = await api.post(`/users/${userId}/approve-club-admin/`, { decision: action });
       showNotification(res.data.message || `Officer ${action}d!`, 'success');
       setUsers(prev => prev.map(u => u.id === userId ? { ...u, approval_status: action === 'approve' ? 'approved' : 'rejected' } : u));
     } catch (err) {

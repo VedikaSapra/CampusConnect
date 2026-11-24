@@ -12,7 +12,7 @@ import {
 } from 'recharts';
 import { motion } from 'framer-motion';
 import { useNotification } from '../../context/NotificationContext';
-
+import { SuperAdminInvitations } from './SuperAdminInvitations';
 const COLORS = ['#5141B8', '#8B5CF6', '#06B6D4', '#10B981', '#F59E0B', '#EF4444', '#EC4899'];
 
 const StatCard = ({ title, value, icon: Icon, color, sub, link }) => {
@@ -372,6 +372,21 @@ export const SuperAdminDashboard = () => {
           </div>
         </div>
       </div>
+
+      {/* Super Administrator Invitation Management */}
+      <section className="mt-8">
+        <div className="mb-5">
+          <h2 className="text-xl font-bold text-[#211B35] dark:text-white">
+            Super Administrator Invitations
+          </h2>
+          <p className="text-sm text-[#77738B] dark:text-[#B3ADC7] mt-1">
+            Generate secure invitation tokens for new Super Administrators.
+          </p>
+        </div>
+
+        <SuperAdminInvitations />
+      </section>
+
     </div>
   );
 };
